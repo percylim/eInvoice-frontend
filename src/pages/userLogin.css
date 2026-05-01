@@ -1,0 +1,25 @@
+.radio-group-horizontal {
+  display: flex;
+  flex-direction: row;
+  gap: 1px; /* 1px space between buttons */
+  align-items: center;
+}
+
+.radio-option {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
+  padding: 8px 12px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  background-color: #f9f9f9;
+}
+
+.radio-option:hover {
+  background-color: #f0f0f0;
+}
+
+.radio-option input[type="radio"] {
+  margin: 0;
+}

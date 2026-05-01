@@ -1,0 +1,40 @@
+// test-einvoice.js - Run with: node test-einvoice.js
+const axios = require('axios');
+
+async function testEInvoiceSubmission() {
+    console.log("=== Testing E-Invoice Submission ===\n");
+    
+    // Test 1: Missing LHDN TIN
+    console.log("Test 1: Submit without LHDN TIN");
+    try {
+        const response = await axios.post('http://localhost:3000/api/einvoice/submitEInvoice', {
+            companyID: 'codesquad',
+            invoiceNo: 'INV-001',
+            customerTinNo: '1234567890',
+            customerName: 'Test Customer',
+            totalAmount: 100
+        });
+        console.log("❌ Should have failed but passed:", response.data);
+    } catch (error) {
+        console.log("✅ Correctly failed:", error.response?.data?.message);
+    }
+    
+    // Test 2: Valid submission (after adding LHDN TIN)
+    console.log("\nTest 2: Valid submission");
+    try {
+        const response = await axios.post('http://localhost:3000/api/einvoice/submitEInvoice', {
+            companyID: 'codesquad',
+            invoiceNo: 'INV-002',
+            customerTinNo: '1234567890',
+            customerName: 'Test Customer',
+            totalAmount: 1000,
+            taxAmount: 60,
+            items: [{ description: "Product 1", quantity: 1, price: 1000 }]
+        });
+        console.log("✅ Submission successful:", response.data);
+    } catch (error) {
+        console.log("❌ Failed:", error.message);
+    }
+}
+
+testEInvoiceSubmission();

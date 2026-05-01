@@ -1,0 +1,26 @@
+label {
+
+    display: block;
+    width: 100%;
+    max-width: 100%;
+    color: blue;
+    text-align: left;
+}
+input {
+    width: 55%;
+    float: center;
+    height: 25px;
+    margin-top: 5px;
+    text-align: left;
+    text-indent: 5px;
+    font-size: 12.6pt;
+    border-radius: 5px;
+    border: solid 1.5px #D3D3D3;
+    -webkit-transition: 1s; /* Safari */
+    transition: 1s;
+
+  }
+.Button
+    {
+        margin:5px;
+    }
